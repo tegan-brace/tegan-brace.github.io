@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Performance — Tegan Brace</title>
+  <meta name="description" content="Performance work by Tegan Brace." />
+  <meta property="og:title" content="Performance — Tegan Brace" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>+</text></svg>" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title"><a href="/">Tegan Brace</a></h1>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/sculpture-installation/">Sculpture / Installation</a></li>
+          <li><a href="/drawingsprints/">Drawings / Prints</a></li>
+          <li><a href="/performance/" aria-current="page">Performance</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="page-title">Performance</h2>
+    <div class="gallery" id="gallery"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="mailto:teganbrace@gmail.com">teganbrace@gmail.com</a>
+      <ul class="footer-social">
+        <li><a href="https://www.instagram.com/legomytego/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/tegan-brace-6551b513a/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://twitter.com/tegomylego" target="_blank" rel="noopener">Twitter</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+
+  <script>
+    /* =====================================================
+       PERFORMANCE IMAGES
+       Add filenames here. Files go in /images/performance/ .
+       Each entry can be a string filename, or an object with
+       a caption: { file: "name.jpg", caption: "Title, 2016" }
+       ===================================================== */
+    const IMAGES = [
+      "cyanotan1.webp",
+      "Cyanotan2.webp",
+      "cyanotan3.webp",
+      "cyanotan4.webp",
+      "cyanotan5.webp",
+      "cyanotan6.webp",
+      "cyanotan7.webp"
+    ];
+
+    const galleryEl = document.getElementById("gallery");
+    const FOLDER = "/images/performance/";
+
+    if (IMAGES.length === 0) {
+      galleryEl.innerHTML = `
+        <div class="gallery-empty">
+          <p>This gallery is empty.</p>
+          <p>Add images to <code>/images/performance/</code> then list their filenames in the <code>IMAGES</code> array in this page's HTML.</p>
+        </div>`;
+    } else {
+      IMAGES.forEach((item) => {
+        const file = typeof item === "string" ? item : item.file;
+        const caption = typeof item === "object" ? item.caption : "";
+        const fig = document.createElement("figure");
+        fig.className = "gallery-item";
+        fig.innerHTML = `
+          <img src="${FOLDER}${file}" alt="${caption || file}" loading="lazy" />
+          ${caption ? `<figcaption class="gallery-caption">${caption}</figcaption>` : ""}
+        `;
+        galleryEl.appendChild(fig);
+      });
+    }
+  </script>
+  <script src="/js/gallery.js"></script>
+</body>
+</html>

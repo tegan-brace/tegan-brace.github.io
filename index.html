@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tegan Brace</title>
+  <meta name="description" content="Tegan Brace — visual artist and sommelier based in Chicago. Sculpture, installation, drawings, prints, and performance." />
+  <meta property="og:title" content="Tegan Brace" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://teganbrace.com/" />
+  <meta property="og:description" content="Visual artist and sommelier based in Chicago." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>+</text></svg>" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title"><a href="/">Tegan Brace</a></h1>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/sculpture-installation/">Sculpture / Installation</a></li>
+          <li><a href="/drawingsprints/">Drawings / Prints</a></li>
+          <li><a href="/performance/">Performance</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Featured work">
+      <div class="hero-slides" id="hero-slides">
+        <!-- Slides are rendered by JS from the FEATURED array below.
+             To change which images appear here, edit the array. -->
+      </div>
+      <div class="hero-arrows">
+        <button class="prev" aria-label="Previous slide">&#8249;</button>
+        <button class="next" aria-label="Next slide">&#8250;</button>
+      </div>
+      <div class="hero-controls" aria-label="Slide indicators"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="mailto:teganbrace@gmail.com">teganbrace@gmail.com</a>
+      <ul class="footer-social">
+        <li><a href="https://www.instagram.com/legomytego/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/tegan-brace-6551b513a/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://twitter.com/tegomylego" target="_blank" rel="noopener">Twitter</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+
+  <script>
+    /* =====================================================
+       HOMEPAGE FEATURED IMAGES
+       Edit this list to change which images appear in the
+       homepage slideshow. Place files in /images/home/ .
+       ===================================================== */
+    const FEATURED = [
+     { src: "/images/home/cyanohandsdetail copy.webp", alt: "cyanotype 1" },
+      {src: "images/home/cyanotan7 copy.webp", alt: "Cyanotan 1"}, 
+     {src: "images/home/cyanotan6 copy.webp", alt: "Cyanotan 2"},
+     {src: "images/home/darkno copy.webp", alt: "No"},
+     {src: "images/home/dramafan1 copy.webp", alt: "Drama Fan"},
+     {src: "images/home/portal copy.webp", alt: "portal"},
+     {src: "images/home/supersensitive copy.webp", alt: "Supersensitive"}
+    ];
+
+    const slidesEl = document.getElementById("hero-slides");
+    if (FEATURED.length === 0) {
+      slidesEl.innerHTML = `
+        <div class="hero-placeholder">
+          <p><strong>Homepage slideshow is empty.</strong></p>
+          <p>Add image files to <code>/images/home/</code> then list them in the <code>FEATURED</code> array in <code>index.html</code>.</p>
+        </div>`;
+    } else {
+      FEATURED.forEach((item, i) => {
+        const div = document.createElement("div");
+        div.className = "hero-slide" + (i === 0 ? " active" : "");
+        div.innerHTML = `<img src="${item.src}" alt="${item.alt || ""}" loading="${i === 0 ? "eager" : "lazy"}" />`;
+        slidesEl.appendChild(div);
+      });
+    }
+  </script>
+  <script src="/js/gallery.js"></script>
+</body>
+</html>
